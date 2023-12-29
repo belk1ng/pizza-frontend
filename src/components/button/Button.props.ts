@@ -1,9 +1,9 @@
 import { ButtonHTMLAttributes, ReactNode } from "react";
 
-type ButtonTextTransform = "default" | "uppercase";
+type ButtonSize = "large" | "small";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode | ReactNode[];
-  textTransform?: ButtonTextTransform;
+  size?: ButtonSize;
   startIcon?: ReactNode;
 }

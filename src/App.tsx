@@ -14,7 +14,8 @@ function App() {
 
   return (
     <main>
-      <Button>Text</Button>
+      <Button>Кнопка</Button>
+      <Button size="large">Кнопка</Button>
       <Input
         autoFocus
         name="content"

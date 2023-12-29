@@ -6,14 +6,14 @@ import classes from "./Button.module.css";
 const Button: FC<ButtonProps> = ({
   children,
   type = "button",
-  textTransform,
+  size = "small",
   startIcon,
   ...props
 }) => {
-  const classNames = cn({
-    [classes.button]: true,
+  const classNames = cn(classes.button, {
     [classes["button--disabled"]]: props.disabled,
-    [classes["button--uppercase"]]: textTransform === "uppercase",
+    [classes["button--large"]]: size === "large",
+    [classes["button--small"]]: size === "small",
   });
 
   return (
