@@ -1,0 +1,36 @@
+.button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  -webkit-border-radius: 28px;
+  -moz-border-radius: 28px;
+  border-radius: 28px;
+  border: 0;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  transition: background-color 0.25s ease;
+}
+
+.button:not(.button--uppercase) {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.button--uppercase {
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.button--disabled {
+  cursor: not-allowed;
+}

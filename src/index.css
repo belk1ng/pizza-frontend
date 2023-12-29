@@ -8,6 +8,7 @@
 
   --divider-color: #d4d6e0;
   --primary-color: #fe724c;
+  --primary-hover-color: #d35533;
   --text-primary: #000;
   --text-secondary: #5b5b5e;
 
@@ -51,6 +52,7 @@ ol[role="list"] {
 body {
   min-height: 100vh;
   line-height: 1.5;
+  background-color: var(--body-bg);
 }
 
 h1,
