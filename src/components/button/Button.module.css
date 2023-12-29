@@ -29,6 +29,7 @@
   font-weight: 600;
   text-transform: uppercase;
   padding: 20px 60px;
+  letter-spacing: 1px;
 }
 
 .button--disabled {
