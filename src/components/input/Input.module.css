@@ -1,0 +1,27 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input__label {
+  color: var(--input-sign-color);
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.input__field {
+  font-size: 17px;
+  background-color: var(--white);
+  color: var(--text-primary);
+  padding: 20px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--input-border-color);
+}
+
+.input__field::placeholder {
+  font-size: 17px;
+  color: var(--input-sign-color);
+}
