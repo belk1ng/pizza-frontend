@@ -7,7 +7,7 @@ const Nav = () => {
     <nav className={classes.nav}>
       <ul className={classes["nav-list"]}>
         {navItems.map(({ title, href, icon }) => (
-          <NavItem icon={icon} href={href}>
+          <NavItem key={href} icon={icon} href={href}>
             {title}
           </NavItem>
         ))}
