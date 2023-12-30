@@ -1,5 +1,6 @@
 .aside {
-  width: 280px;
+  max-width: 280px;
+  width: 100%;
   border-right: 1px solid var(--divider-color);
   padding: 30px 28px 53px;
 }

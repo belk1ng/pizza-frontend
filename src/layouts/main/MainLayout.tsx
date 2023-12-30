@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import UserCard from "@components/user-card";
 import Aside from "./aside";
 import Nav from "./nav";
 import { Outlet } from "react-router-dom";
@@ -8,6 +9,7 @@ const MainLayout = () => {
   return (
     <>
       <Aside>
+        <UserCard fullName="Дмитрий Белкин" email="be1kindmit@yandex.ru" />
         <Nav />
       </Aside>
       <main className={classes.content}>

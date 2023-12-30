@@ -1,0 +1,31 @@
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.user-info__avatar {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 90px;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.user-info__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.user-info__name {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.user-info__email {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
