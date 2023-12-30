@@ -7,7 +7,7 @@ export const ROOT_PATHS = {
   root: ROOT_PATH,
   details: (productId: number) => path(ROOT_PATH, `details/${productId}`),
   thanks: path(ROOT_PATH, "thanks"),
-  cart: path(ROOT_PATH, "car"),
+  cart: path(ROOT_PATH, "cart"),
 };
 
 export const AUTH_PATHS = {

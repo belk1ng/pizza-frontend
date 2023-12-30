@@ -1,0 +1,7 @@
+.nav-item__link {
+  font-size: 16px;
+  color: var(--text-primary);
+  display: flex;
+  gap: 14px;
+  text-decoration: none;
+}

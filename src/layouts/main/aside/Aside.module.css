@@ -1,0 +1,5 @@
+.aside {
+  width: 280px;
+  border-right: 1px solid var(--divider-color);
+  padding: 30px 28px 53px;
+}

@@ -1,0 +1,8 @@
+.nav-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  padding: 0;
+  margin: 0;
+}

@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Catalog, Cart } from "./elements";
-import App from "@/App";
 import { ROOT_PATHS } from "@routes/paths.ts";
+import MainLayout from "@layouts/main";
 
 const router = createBrowserRouter([
   {
     path: ROOT_PATHS.root,
-    element: <App />,
+    element: <MainLayout />,
     children: [
       {
         path: ROOT_PATHS.root,

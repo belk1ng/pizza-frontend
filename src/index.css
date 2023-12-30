@@ -90,3 +90,8 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
+
+#root {
+  display: flex;
+  height: 100dvh;
+}
