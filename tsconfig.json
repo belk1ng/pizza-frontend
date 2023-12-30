@@ -10,7 +10,8 @@
       "@utils/*": ["./src/utils/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@hooks/*": ["./src/hooks/*"],
-      "@sections/*": ["./src/sections/*"]
+      "@sections/*": ["./src/sections/*"],
+      "@hocs/*": ["./src/hocs/*"]
     },
     "target": "ES2020",
     "useDefineForClassFields": true,

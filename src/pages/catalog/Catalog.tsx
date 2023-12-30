@@ -1,4 +1,4 @@
-import withTitle from "@/hocs/withTitle.tsx";
+import withTitle from "@hocs/withTitle";
 
 const Catalog = () => {
   return <h1>Catalog page</h1>;
