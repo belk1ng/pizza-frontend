@@ -1,7 +1,7 @@
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 
 const useDocumentTitle = (prefix: string) => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (prefix) {
       document.title = `${prefix} | PizzaApp`;
     }
