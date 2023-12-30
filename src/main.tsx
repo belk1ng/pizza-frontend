@@ -12,6 +12,6 @@ if (mountContainer) {
       <RouterProvider router={router} />
     </React.StrictMode>
   );
+} else {
+  throw new Error("Mount container wan not found...");
 }
-
-throw new Error("Mount container wan not found...");
