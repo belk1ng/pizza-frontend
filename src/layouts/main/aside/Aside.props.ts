@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
+import { HTMLAttributes } from "react";
 
-export interface AsideProps {
-  children: ReactNode;
-}
+export interface AsideProps extends HTMLAttributes<HTMLElement> {}
