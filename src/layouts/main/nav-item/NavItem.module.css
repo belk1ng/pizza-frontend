@@ -1,7 +1,24 @@
 .nav-item__link {
   font-size: 16px;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   display: flex;
   gap: 14px;
   text-decoration: none;
+  padding: 15px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.nav-item__link:not(.nav-item__link--active):hover {
+  background-color: var(--menu-item-active-color);
+}
+
+.nav-item__link--active {
+  background-color: var(--menu-item-active-color);
+  color: var(--text-primary);
 }
