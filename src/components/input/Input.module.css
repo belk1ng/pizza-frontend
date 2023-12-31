@@ -1,4 +1,5 @@
 .input {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -11,6 +12,7 @@
 }
 
 .input__field {
+  width: 100%;
   font-size: 17px;
   background-color: var(--white);
   color: var(--text-primary);
@@ -24,4 +26,20 @@
 .input__field::placeholder {
   font-size: 17px;
   color: var(--input-sign-color);
+}
+
+.input__icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.input__field--external {
+  padding-left: 44px;
+}
+
+.input__field--external::placeholder {
+  font-size: 14px;
+  font-weight: 400;
 }

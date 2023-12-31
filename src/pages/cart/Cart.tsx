@@ -1,7 +1,8 @@
 import withTitle from "@hocs/withTitle";
+import Heading from "@components/heading";
 
 const Cart = () => {
-  return <h1>Cart page</h1>;
+  return <Heading>Корзина</Heading>;
 };
 
 const CartWithTitle = withTitle(Cart, "Корзина");
