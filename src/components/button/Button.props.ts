@@ -6,4 +6,5 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode | ReactNode[];
   size?: ButtonSize;
   startIcon?: ReactNode;
+  circled?: boolean;
 }

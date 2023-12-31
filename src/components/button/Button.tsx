@@ -8,13 +8,20 @@ const Button: FC<ButtonProps> = ({
   type = "button",
   size = "small",
   startIcon,
+  circled = false,
+  className,
   ...props
 }) => {
-  const classNames = cn(classes.button, {
-    [classes["button--disabled"]]: props.disabled,
-    [classes["button--large"]]: size === "large",
-    [classes["button--small"]]: size === "small",
-  });
+  const classNames = cn(
+    classes.button,
+    {
+      [classes["button--disabled"]]: props.disabled,
+      [classes["button--large"]]: size === "large",
+      [classes["button--small"]]: size === "small",
+      [classes["button--circled"]]: circled,
+    },
+    className
+  );
 
   return (
     <button type={type} className={classNames} {...props}>

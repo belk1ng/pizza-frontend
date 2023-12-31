@@ -1,8 +1,8 @@
 import { Suspense } from "react";
+import { Outlet } from "react-router-dom";
 import UserCard from "@components/user-card";
 import Aside from "./aside";
 import Nav from "./nav";
-import { Outlet } from "react-router-dom";
 import classes from "./MainLayout.module.css";
 
 const MainLayout = () => {

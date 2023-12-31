@@ -7,7 +7,7 @@ const UserCard: FC<UserCardProps> = ({ fullName, email, avatarSource }) => {
     <section className={classes["user-info"]}>
       <img
         src={avatarSource ?? "/assets/pics/user-avatar.png"}
-        alt="User avatar"
+        alt="Аватар пользователя"
         className={classes["user-info__avatar"]}
       />
 
