@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { InputProps } from "./Input.props.ts";
+import type { FC } from "react";
+import type { InputProps } from "./Input.props";
 import classes from "./Input.module.css";
 import cn from "classnames";
 

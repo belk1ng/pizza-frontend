@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { ButtonProps } from "./Button.props";
-import cn from "classnames";
+import type { FC } from "react";
+import type { ButtonProps } from "./Button.props";
 import classes from "./Button.module.css";
+import cn from "classnames";
 
 const Button: FC<ButtonProps> = ({
   children,

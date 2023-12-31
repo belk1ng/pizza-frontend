@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { UserCardProps } from "./UserCard.props";
+import type { FC } from "react";
+import type { UserCardProps } from "./UserCard.props";
 import classes from "./UserCard.module.css";
 
 const UserCard: FC<UserCardProps> = ({ fullName, email, avatarSource }) => {

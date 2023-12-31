@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { AsideProps } from "./Aside.props";
+import type { FC } from "react";
+import type { AsideProps } from "./Aside.props";
 import classes from "./Aside.module.css";
 
 const Aside: FC<AsideProps> = ({ children }) => {

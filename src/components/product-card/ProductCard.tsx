@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { ProductCardProps } from "./ProductCard.props";
+import type { FC } from "react";
+import type { ProductCardProps } from "./ProductCard.props";
 import Button from "@components/button";
 import WhiteCardIcon from "@assets/icons/WhiteCart";
 import RatingIcon from "@assets/icons/Rating";

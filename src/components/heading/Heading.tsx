@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { HeadingProps } from "./Heading.props";
+import type { FC } from "react";
+import type { HeadingProps } from "./Heading.props";
 import classes from "./Heading.module.css";
 import cn from "classnames";
 
