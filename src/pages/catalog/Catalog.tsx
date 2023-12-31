@@ -1,8 +1,9 @@
-import withTitle from "@hocs/withTitle";
-import ProductCard from "@components/product-card";
+import SearchIcon from "@assets/icons/Search";
 import Heading from "@components/heading";
 import Input from "@components/input";
-import SearchIcon from "@assets/icons/Search";
+import ProductCard from "@components/product-card";
+import withTitle from "@hocs/withTitle";
+
 import classes from "./Catalog.module.css";
 
 const Catalog = () => {

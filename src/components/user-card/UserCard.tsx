@@ -1,6 +1,7 @@
 import type { FC } from "react";
-import type { UserCardProps } from "./UserCard.props";
+
 import classes from "./UserCard.module.css";
+import type { UserCardProps } from "./UserCard.props";
 
 const UserCard: FC<UserCardProps> = ({ fullName, email, avatarSource }) => {
   return (

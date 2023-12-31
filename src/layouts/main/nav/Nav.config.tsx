@@ -1,5 +1,5 @@
-import CatalogIcon from "@assets/icons/Catalog";
 import CartIcon from "@assets/icons/Cart";
+import CatalogIcon from "@assets/icons/Catalog";
 import { ROOT_PATHS } from "@routes/paths.ts";
 
 export const navItems = [

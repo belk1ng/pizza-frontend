@@ -1,8 +1,9 @@
-import type { FC } from "react";
-import type { NavItemProps } from "./NavItem.props";
-import { NavLink } from "react-router-dom";
-import classes from "./NavItem.module.css";
 import cn from "classnames";
+import type { FC } from "react";
+import { NavLink } from "react-router-dom";
+
+import classes from "./NavItem.module.css";
+import type { NavItemProps } from "./NavItem.props";
 
 const NavItem: FC<NavItemProps> = ({ icon, children, href }) => {
   return (

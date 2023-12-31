@@ -1,6 +1,6 @@
-import NavItem from "../nav-item";
 import { navItems } from "./Nav.config";
 import classes from "./Nav.module.css";
+import NavItem from "../nav-item";
 
 const Nav = () => {
   return (

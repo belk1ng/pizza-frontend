@@ -1,9 +1,11 @@
 import type { FC } from "react";
-import type { ProductCardProps } from "./ProductCard.props";
-import Button from "@components/button";
-import WhiteCardIcon from "@assets/icons/WhiteCart";
+
 import RatingIcon from "@assets/icons/Rating";
+import WhiteCardIcon from "@assets/icons/WhiteCart";
+import Button from "@components/button";
+
 import classes from "./ProductCard.module.css";
+import type { ProductCardProps } from "./ProductCard.props";
 
 const ProductCard: FC<ProductCardProps> = ({
   title,
