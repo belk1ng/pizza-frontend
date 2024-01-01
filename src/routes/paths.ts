@@ -5,7 +5,10 @@ const AUTH_ROOT_PATH = "/auth/";
 
 export const ROOT_PATHS = {
   root: ROOT_PATH,
-  details: (productId: number) => path(ROOT_PATH, `details/${productId}`),
+  product: {
+    path: path(ROOT_PATH, "product/:productId"),
+    resolver: (productId: number) => path(ROOT_PATH, `product/${productId}`),
+  },
   thanks: path(ROOT_PATH, "thanks"),
   cart: path(ROOT_PATH, "cart"),
 };

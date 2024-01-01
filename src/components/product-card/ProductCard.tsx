@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { FC, MouseEvent } from "react";
 
 import RatingIcon from "@assets/icons/Rating";
 import WhiteCardIcon from "@assets/icons/WhiteCart";
@@ -14,6 +14,10 @@ const ProductCard: FC<ProductCardProps> = ({
   imageSource,
   rating,
 }) => {
+  const handleAddToCard = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
+
   return (
     <div className={classes.card}>
       <div className={classes.card__top}>
@@ -26,7 +30,11 @@ const ProductCard: FC<ProductCardProps> = ({
           <div className={classes.card__price}>
             {price} <span className={classes["card__price-sign"]}>₽</span>
           </div>
-          <Button circled className={classes.card__button}>
+          <Button
+            circled
+            className={classes.card__button}
+            onClick={handleAddToCard}
+          >
             <WhiteCardIcon />
           </Button>
         </div>
