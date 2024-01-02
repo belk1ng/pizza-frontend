@@ -7,13 +7,8 @@ import Button from "@components/button";
 import classes from "./ProductCard.module.css";
 import type { ProductCardProps } from "./ProductCard.props";
 
-const ProductCard: FC<ProductCardProps> = ({
-  title,
-  description,
-  price,
-  imageSource,
-  rating,
-}) => {
+const ProductCard: FC<ProductCardProps> = ({ record }) => {
+  const { name, ingredients, rating, price, image } = record;
   const handleAddToCard = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
@@ -23,7 +18,7 @@ const ProductCard: FC<ProductCardProps> = ({
       <div className={classes.card__top}>
         <img
           className={classes.card__image}
-          src={imageSource}
+          src={image}
           alt="Изображение продукта"
         />
         <div className={classes.card__header}>
@@ -44,8 +39,8 @@ const ProductCard: FC<ProductCardProps> = ({
           {rating}
           <RatingIcon />
         </div>
-        <h3 className={classes.card__title}>{title}</h3>
-        <p className={classes.card__description}>{description}</p>
+        <h3 className={classes.card__title}>{name}</h3>
+        <p className={classes.card__description}>{ingredients.join(", ")}</p>
       </div>
     </div>
   );

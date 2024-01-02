@@ -1,7 +1,5 @@
+import type { Product } from "@/types/product";
+
 export interface ProductCardProps {
-  title: string;
-  description: string;
-  price: number;
-  imageSource: string;
-  rating: number;
+  record: Product;
 }
