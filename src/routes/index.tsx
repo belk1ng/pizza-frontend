@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import MainLayout from "@layouts/main";
+import { productLoader } from "@pages/product";
 import { ROOT_PATHS } from "@routes/paths";
 
 import { Catalog, Cart, Product } from "./elements";
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       {
         path: ROOT_PATHS.product.path,
         element: <Product />,
+        loader: productLoader,
       },
     ],
   },
