@@ -1,0 +1,13 @@
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 8px;
+  -webkit-border-radius: 136px;
+  -moz-border-radius: 136px;
+  border-radius: 136px;
+  box-shadow: var(--primary-shadow);
+}

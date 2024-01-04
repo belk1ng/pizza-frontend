@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
 
-import useDocumentTitle from "@hooks/useDocumentTitle.ts";
+import useDocumentTitle from "@hooks/useDocumentTitle";
 
 const withTitle = <P extends Record<string, unknown>>(
   Component: ComponentType<P>,

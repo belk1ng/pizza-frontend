@@ -62,25 +62,10 @@
   margin-top: -16px;
 }
 
-.card__rating {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background-color: var(--white);
-  font-size: 12px;
-  font-weight: 600;
-  padding: 6px 8px;
-  -webkit-border-radius: 136px;
-  -moz-border-radius: 136px;
-  border-radius: 136px;
-  box-shadow: var(--primary-shadow);
-  margin-bottom: 5px;
-}
-
 .card__title {
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin: 5px 0 10px;
   color: var(--text-primary);
 }
 

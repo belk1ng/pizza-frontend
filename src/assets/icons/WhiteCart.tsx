@@ -1,4 +1,4 @@
-const WhiteCardIcon = () => {
+const WhiteCartIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17,4 +17,4 @@ const WhiteCardIcon = () => {
   );
 };
 
-export default WhiteCardIcon;
+export default WhiteCartIcon;

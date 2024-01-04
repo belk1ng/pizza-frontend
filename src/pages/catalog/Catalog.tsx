@@ -9,7 +9,7 @@ import classes from "./Catalog.module.css";
 const Catalog = () => {
   return (
     <>
-      <div className={classes.header}>
+      <header className={classes.header}>
         <Heading>Каталог</Heading>
         <Input
           name={"search"}
@@ -17,10 +17,10 @@ const Catalog = () => {
           placeholder="Введите блюдо или состав"
           startIcon={<SearchIcon />}
         />
-      </div>
-      <div className={classes.content}>
+      </header>
+      <section className={classes.content}>
         <ProductsList />
-      </div>
+      </section>
     </>
   );
 };

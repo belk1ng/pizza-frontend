@@ -35,9 +35,11 @@ const ProductsList = () => {
   return (
     <ul className={classes.list}>
       {products.map((record) => (
-        <Link key={record.id} to={ROOT_PATHS.product.resolver(record.id)}>
-          <ProductCard record={record} />
-        </Link>
+        <li className={classes.list__item} key={record.id}>
+          <Link to={ROOT_PATHS.product.resolver(record.id)}>
+            <ProductCard record={record} />
+          </Link>
+        </li>
       ))}
     </ul>
   );
