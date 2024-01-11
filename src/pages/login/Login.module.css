@@ -1,0 +1,30 @@
+.content {
+  width: 100%;
+}
+
+.content__form {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.content__footer {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.content__question {
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.content__link {
+  color: var(--primary-color);
+  transition: color 0.25s ease;
+}
+
+.content__link:hover {
+  color: var(--primary-hover-color);
+}

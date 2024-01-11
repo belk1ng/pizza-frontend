@@ -1,0 +1,17 @@
+.layout__aside {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layout__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 85px;
+}
+
+.layout__aside,
+.layout__content {
+  flex: 1 1 auto;
+}
