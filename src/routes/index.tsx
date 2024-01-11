@@ -4,13 +4,18 @@ import AuthLayout from "@layouts/auth";
 import MainLayout from "@layouts/main";
 import { productLoader } from "@pages/product";
 import { AUTH_PATHS, ROOT_PATHS } from "@routes/paths";
+import ProtectedRoute from "@routes/ProtectedRoute";
 
 import { Catalog, Cart, Product, Login } from "./elements";
 
 const router = createBrowserRouter([
   {
     path: ROOT_PATHS.root,
-    element: <MainLayout />,
+    element: (
+      <ProtectedRoute>
+        <MainLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: ROOT_PATHS.root,
