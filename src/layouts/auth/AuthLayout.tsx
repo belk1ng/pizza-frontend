@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
 import classes from "./AuthLayout.module.css";
@@ -12,7 +13,9 @@ const AuthLayout = () => {
         />
       </aside>
       <main className={classes.layout__content}>
-        <Outlet />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </main>
     </>
   );

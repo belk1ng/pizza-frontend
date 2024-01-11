@@ -1,4 +1,4 @@
-import { StrictMode, Suspense } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 
@@ -10,9 +10,7 @@ const mountContainer = document.getElementById("root");
 if (mountContainer) {
   createRoot(mountContainer).render(
     <StrictMode>
-      <Suspense fallback={<div>Loading...</div>}>
-        <RouterProvider router={router} />
-      </Suspense>
+      <RouterProvider router={router} />
     </StrictMode>
   );
 } else {

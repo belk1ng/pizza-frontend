@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import LogoutIcon from "@assets/icons/Logout";
@@ -31,7 +32,9 @@ const MainLayout = () => {
         </Button>
       </Aside>
       <main className={classes.content}>
-        <Outlet />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </main>
     </>
   );
