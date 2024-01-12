@@ -21,8 +21,8 @@ export default defineConfig({
       "@utils": path.resolve(__dirname, "src/utils"),
       "@layouts": path.resolve(__dirname, "src/layouts"),
       "@hooks": path.resolve(__dirname, "src/hooks"),
-      "@sections": path.resolve(__dirname, "src/sections"),
       "@hocs": path.resolve(__dirname, "src/hocs"),
+      "@redux": path.resolve(__dirname, "src/redux"),
     },
   },
 });
