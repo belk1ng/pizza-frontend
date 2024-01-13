@@ -22,7 +22,7 @@ export default defineConfig({
       "@layouts": path.resolve(__dirname, "src/layouts"),
       "@hooks": path.resolve(__dirname, "src/hooks"),
       "@hocs": path.resolve(__dirname, "src/hocs"),
-      "@redux": path.resolve(__dirname, "src/redux"),
+      "@store": path.resolve(__dirname, "src/store"),
     },
   },
 });

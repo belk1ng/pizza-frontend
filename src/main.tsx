@@ -3,8 +3,8 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
 
-import { store } from "@/redux/store";
 import router from "@/routes";
+import { store } from "@store/store";
 import "@/index.css";
 
 const mountContainer = document.getElementById("root");

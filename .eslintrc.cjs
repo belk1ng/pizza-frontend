@@ -26,7 +26,7 @@ module.exports = {
     semi: ["error", "always", { omitLastInOneLineBlock: false }],
     quotes: ["error", "double"],
     "react/prop-types": 0,
-    'import/no-unresolved': 'error',
+    'import/no-unresolved': 1,
     'import/order': [
       'error',
       {

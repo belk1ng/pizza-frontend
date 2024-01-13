@@ -1,55 +1,50 @@
-import { AxiosError } from "axios";
-import { useState } from "react";
+import { useEffect } from "react";
 import type { FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import axiosInstance from "@/api/axios";
-import type { LoginResponse } from "@/types/auth";
 import Button from "@components/button";
 import Heading from "@components/heading";
 import Input from "@components/input";
 import withTitle from "@hocs/withTitle";
 import { AUTH_PATHS, ROOT_PATHS } from "@routes/paths";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { authActions, authSelector } from "@store/slices";
+import { login } from "@store/slices/auth.slice";
 
 import classes from "./Login.module.css";
-import type { FormLoginValues, LoginValues } from "./Login.types";
+import type { FormLoginValues } from "./Login.types";
 
 const Login = () => {
-  const [error, setError] = useState("");
+  const dispatch = useAppDispatch();
+
+  const { accessToken, loginError } = useAppSelector(authSelector);
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    if (accessToken) {
+      navigate(ROOT_PATHS.root);
+    }
+  }, [navigate, accessToken]);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    dispatch(authActions.resetLoginError());
+
     const form = event.target as HTMLFormElement & FormLoginValues;
     const data = {
       email: form.email.value,
       password: form.password.value,
     };
-    setError("");
-    await login(data);
-  };
 
-  const login = async (formData: LoginValues) => {
-    try {
-      const { data } = await axiosInstance.post<LoginResponse>("/auth/login", {
-        ...formData,
-      });
-      localStorage.setItem("access_token", data.access_token);
-      navigate(ROOT_PATHS.root);
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        const errorMessage = error.response?.data?.message;
-        console.log(errorMessage);
-        setError(errorMessage ?? "");
-      }
-    }
+    dispatch(login(data));
   };
 
   return (
     <section className={classes.content}>
       <Heading>Вход</Heading>
-      <p className={classes.content__error}>{error}</p>
+      {loginError && <p className={classes.content__error}>{loginError}</p>}
       <form className={classes.content__form} onSubmit={handleSubmit}>
         <Input name="email" placeholder="Email" label="Ваш email" />
         <Input

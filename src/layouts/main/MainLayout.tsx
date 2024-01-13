@@ -5,6 +5,8 @@ import LogoutIcon from "@assets/icons/Logout";
 import Button from "@components/button";
 import UserCard from "@components/user-card";
 import { AUTH_PATHS } from "@routes/paths";
+import { useAppDispatch } from "@store/hooks";
+import { authActions } from "@store/slices";
 
 import Aside from "./aside";
 import classes from "./MainLayout.module.css";
@@ -13,8 +15,10 @@ import Nav from "./nav";
 const MainLayout = () => {
   const navigate = useNavigate();
 
+  const dispatch = useAppDispatch();
+
   const logout = () => {
-    localStorage.removeItem("access_token");
+    dispatch(authActions.resetAccessToken());
     navigate(AUTH_PATHS.sign_in);
   };
 

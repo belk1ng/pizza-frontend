@@ -11,7 +11,7 @@
       "@layouts/*": ["./src/layouts/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@hocs/*": ["./src/hocs/*"],
-      "@redux/*": ["./src/redux/*"]
+      "@store/*": ["./src/store/*"]
     },
     "target": "ES2020",
     "useDefineForClassFields": true,
