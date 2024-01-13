@@ -1,12 +1,13 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import LogoutIcon from "@assets/icons/Logout";
 import Button from "@components/button";
 import UserCard from "@components/user-card";
 import { AUTH_PATHS } from "@routes/paths";
-import { useAppDispatch } from "@store/hooks";
-import { authActions } from "@store/slices";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { authActions, authSelector } from "@store/slices";
+import { getProfile } from "@store/slices/auth.slice";
 
 import Aside from "./aside";
 import classes from "./MainLayout.module.css";
@@ -15,17 +16,27 @@ import Nav from "./nav";
 const MainLayout = () => {
   const navigate = useNavigate();
 
+  const { user } = useAppSelector(authSelector);
+
   const dispatch = useAppDispatch();
 
+  useEffect(() => {
+    const profileRequest = dispatch(getProfile());
+
+    return () => {
+      profileRequest.abort();
+    };
+  }, [dispatch]);
+
   const logout = () => {
-    dispatch(authActions.resetAccessToken());
+    dispatch(authActions.logout());
     navigate(AUTH_PATHS.sign_in);
   };
 
   return (
     <>
       <Aside>
-        <UserCard fullName="Дмитрий Белкин" email="be1kindmit@yandex.ru" />
+        <UserCard fullName={user?.name ?? ""} email={user?.email ?? ""} />
         <Nav />
         <Button
           className={classes.aside__logout}
