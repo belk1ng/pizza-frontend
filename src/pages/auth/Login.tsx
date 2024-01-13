@@ -11,8 +11,8 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { authActions, authSelector } from "@store/slices";
 import { login } from "@store/slices/auth.slice";
 
-import classes from "./Login.module.css";
-import type { FormLoginValues } from "./Login.types";
+import classes from "./Auth.module.css";
+import type { FormLoginValues } from "./Auth.types";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -53,7 +53,7 @@ const Login = () => {
           placeholder="Пароль"
           label="Ваш пароль"
         />
-        <Button size="large" type="submit">
+        <Button size="large" type="submit" className={classes.content__button}>
           Вход
         </Button>
 

@@ -16,6 +16,10 @@
   gap: 35px;
 }
 
+.content__button {
+  align-self: center;
+}
+
 .content__footer {
   text-align: center;
   font-size: 14px;

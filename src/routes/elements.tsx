@@ -3,4 +3,5 @@ import { lazy } from "react";
 export const Catalog = lazy(() => import("@pages/catalog"));
 export const Cart = lazy(() => import("@pages/cart"));
 export const Product = lazy(() => import("@pages/product"));
-export const Login = lazy(() => import("@pages/login"));
+export const Login = lazy(() => import("@pages/auth/Login"));
+export const Signup = lazy(() => import("@pages/auth/Signup"));
