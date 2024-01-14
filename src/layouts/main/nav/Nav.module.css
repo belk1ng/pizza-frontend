@@ -11,3 +11,24 @@
   padding: 0;
   margin: 0;
 }
+
+.nav-item__content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-item__badge {
+  min-width: 20px;
+  aspect-ratio: 1;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

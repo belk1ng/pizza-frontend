@@ -7,7 +7,7 @@ import type { NavItemProps } from "./NavItem.props";
 
 const NavItem: FC<NavItemProps> = ({ icon, children, href }) => {
   return (
-    <li className={classes["nav-item"]}>
+    <li>
       <NavLink
         className={({ isActive }) =>
           cn(classes["nav-item__link"], {

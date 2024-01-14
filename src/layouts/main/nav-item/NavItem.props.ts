@@ -1,7 +1,6 @@
-import { ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
-export interface NavItemProps {
-  children: string;
+export interface NavItemProps extends HTMLAttributes<HTMLLIElement> {
   icon: ReactNode;
   href: string;
 }

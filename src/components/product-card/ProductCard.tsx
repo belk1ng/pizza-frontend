@@ -3,14 +3,19 @@ import type { FC, MouseEvent } from "react";
 import WhiteCartIcon from "@assets/icons/WhiteCart";
 import Button from "@components/button";
 import Rating from "@components/rating";
+import { useAppDispatch } from "@store/hooks";
+import { cartActions } from "@store/slices";
 
 import classes from "./ProductCard.module.css";
 import type { ProductCardProps } from "./ProductCard.props";
 
 const ProductCard: FC<ProductCardProps> = ({ record }) => {
-  const { name, ingredients, rating, price, image } = record;
+  const { id, name, ingredients, rating, price, image } = record;
+
+  const dispatch = useAppDispatch();
   const handleAddToCard = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    dispatch(cartActions.addProduct(id));
   };
 
   return (

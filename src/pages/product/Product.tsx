@@ -7,16 +7,24 @@ import Button from "@components/button";
 import Heading from "@components/heading";
 import Rating from "@components/rating";
 import withTitle from "@hocs/withTitle";
+import { useAppDispatch } from "@store/hooks.ts";
+import { cartActions } from "@store/slices";
 
 import classes from "./Product.module.css";
 
 const Product = () => {
   const product = useLoaderData() as Product;
 
+  const dispatch = useAppDispatch();
+
   const navigate = useNavigate();
 
   const handleGetBack = () => {
     navigate(-1);
+  };
+
+  const handleAddToCard = () => {
+    dispatch(cartActions.addProduct(product.id));
   };
 
   return (
@@ -31,6 +39,7 @@ const Product = () => {
         <Button
           startIcon={<WhiteCartIcon />}
           className={classes.header__button}
+          onClick={handleAddToCard}
         >
           В корзину
         </Button>

@@ -9,7 +9,7 @@ import { FormSignupValues } from "@pages/auth/Auth.types";
 import { AUTH_PATHS, ROOT_PATHS } from "@routes/paths";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { authActions, authSelector } from "@store/slices";
-import { signUp } from "@store/slices/auth.slice.ts";
+import { signUp } from "@store/slices/auth.slice";
 
 import classes from "./Auth.module.css";
 
