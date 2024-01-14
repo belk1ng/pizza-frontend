@@ -1,57 +1,67 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import axiosInstance from "@/api/axios";
 import type { Products } from "@/types/product";
 import ProductCard from "@components/product-card";
+import useRequest from "@hooks/useRequest";
 import { ROOT_PATHS } from "@routes/paths";
 
 import type { ProductListProps } from "./ProductList.props";
 import classes from "./ProductsList.module.css";
 
 const ProductsList: FC<ProductListProps> = ({ filterName }) => {
-  const [products, setProducts] = useState<Products>([]);
+  const {
+    data: products,
+    request,
+    error,
+    loading,
+  } = useRequest<Products>("/products");
 
   useEffect(() => {
-    const abortController = new AbortController();
-
     const params = new URLSearchParams();
     const name = filterName.trim();
 
     if (name) {
       params.append("name", name);
     }
-    const getProducts = async () => {
-      try {
-        const response = await axiosInstance.get<Products>("/products", {
-          signal: abortController.signal,
-          params,
-        });
-        return response.data;
-      } catch (error) {
-        console.log(error);
-        return [];
-      }
-    };
 
-    getProducts().then((data) => setProducts(data));
+    const abortController = new AbortController();
+
+    void request({
+      params,
+      signal: abortController.signal,
+    });
 
     return () => {
       abortController.abort();
     };
-  }, [filterName]);
+  }, [filterName, request]);
 
-  return (
-    <ul className={classes.list}>
-      {products.map((record) => (
-        <li className={classes.list__item} key={record.id}>
-          <Link to={ROOT_PATHS.product.resolver(record.id)}>
-            <ProductCard record={record} />
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
+  if (loading) {
+    return <p>Загружаем...</p>;
+  }
+
+  if (error) {
+    return (
+      <p>Возникла ошибка: {error?.response?.data?.message ?? error.message}</p>
+    );
+  }
+
+  if (products && products.length > 0) {
+    return (
+      <ul className={classes.list}>
+        {products.map((record) => (
+          <li className={classes.list__item} key={record.id}>
+            <Link to={ROOT_PATHS.product.resolver(record.id)}>
+              <ProductCard record={record} />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  return <p>По вашему запросу ничего не найдено</p>;
 };
 
 export default ProductsList;
