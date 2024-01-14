@@ -7,7 +7,7 @@ import Button from "@components/button";
 import Heading from "@components/heading";
 import Rating from "@components/rating";
 import withTitle from "@hocs/withTitle";
-import { useAppDispatch } from "@store/hooks.ts";
+import { useAppDispatch } from "@store/hooks";
 import { cartActions } from "@store/slices";
 
 import classes from "./Product.module.css";
