@@ -33,6 +33,13 @@ const cartSlice = createSlice({
 
       state.productsCount++;
     },
+    removeProduct: (state, action: PayloadAction<CartPayloadProductId>) => {
+      const productId = action.payload;
+      const productsCount = state.products[productId];
+
+      state.productsCount -= productsCount;
+      delete state.products[productId];
+    },
     incrementProductCount: (
       state,
       action: PayloadAction<CartPayloadProductId>

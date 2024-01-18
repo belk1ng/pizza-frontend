@@ -11,6 +11,7 @@ const Button: FC<ButtonProps> = ({
   startIcon,
   circled = false,
   className,
+  variant = "contained",
   ...props
 }) => {
   const classNames = cn(
@@ -21,6 +22,9 @@ const Button: FC<ButtonProps> = ({
       [classes["button--small"]]: size === "small",
       [classes["button--circled"]]: circled,
     },
+    variant === "contained"
+      ? classes["button--contained"]
+      : classes["button--outlined"],
     className
   );
 

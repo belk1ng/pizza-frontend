@@ -1,6 +1,4 @@
 .button {
-  background-color: var(--primary-color);
-  color: var(--white);
   -webkit-border-radius: 28px;
   -moz-border-radius: 28px;
   border-radius: 28px;
@@ -16,9 +14,27 @@
   transition: all 0.25s ease;
 }
 
+.button--contained {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.button--outlined {
+  border: 1px solid var(--primary-color);
+  background-color: var(--white);
+  color: var(--primary-color);
+}
+
 .button:hover {
-  background-color: var(--primary-hover-color);
   scale: 1.03;
+}
+
+.button--contained:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.button--outlined:hover {
+  border: 1px solid var(--primary-hover-color);
 }
 
 .button--small {
@@ -46,4 +62,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 30px;
+  min-width: 30px;
+  max-height: 30px;
+  min-height: 30px;
 }
