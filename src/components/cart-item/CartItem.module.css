@@ -1,0 +1,56 @@
+.item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.item__info {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.item__image {
+  max-width: 82px;
+  width: 82px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.item__name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.item__price {
+  font-size: 16px;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.item__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item__count {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.item__remove {
+  cursor: pointer;
+}
+
+.item__remove,
+.item__remove svg {
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  min-height: 20px;
+}

@@ -1,5 +1,6 @@
 import type { FC } from "react";
 
+import RemoveIcon from "@assets/icons/Remove";
 import Button from "@components/ui/button";
 import { useAppDispatch } from "@store/hooks";
 import { cartActions } from "@store/slices";
@@ -23,7 +24,7 @@ const CartItem: FC<CartItemProps> = ({ id, name, image, price, count }) => {
   };
 
   return (
-    <article className={classes.item}>
+    <li className={classes.item}>
       <div className={classes.item__info}>
         <img
           className={classes.item__image}
@@ -32,7 +33,7 @@ const CartItem: FC<CartItemProps> = ({ id, name, image, price, count }) => {
         />
         <div className={classes.item__content}>
           <p className={classes.item__name}>{name}</p>
-          <p className={classes.item__name}>{price} ₽</p>
+          <p className={classes.item__price}>{price} ₽</p>
         </div>
       </div>
       <div className={classes.item__actions}>
@@ -43,9 +44,11 @@ const CartItem: FC<CartItemProps> = ({ id, name, image, price, count }) => {
         <Button circled onClick={handleIncrement}>
           +
         </Button>
-        <Button onClick={handleRemove}>X</Button>
+        <span className={classes.item__remove} onClick={handleRemove}>
+          <RemoveIcon />
+        </span>
       </div>
-    </article>
+    </li>
   );
 };
 

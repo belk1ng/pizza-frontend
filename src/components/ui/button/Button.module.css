@@ -66,4 +66,6 @@
   min-width: 30px;
   max-height: 30px;
   min-height: 30px;
+  font-size: 20px;
+  font-family: monospace;
 }
