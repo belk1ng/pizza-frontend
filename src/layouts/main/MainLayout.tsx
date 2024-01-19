@@ -2,7 +2,7 @@ import { Suspense, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import LogoutIcon from "@assets/icons/Logout";
-import Button from "@components/button";
+import Button from "@components/ui/button";
 import UserCard from "@components/user-card";
 import { AUTH_PATHS } from "@routes/paths";
 import { useAppDispatch, useAppSelector } from "@store/hooks";

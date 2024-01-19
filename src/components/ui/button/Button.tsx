@@ -2,7 +2,7 @@ import cn from "classnames";
 import type { FC } from "react";
 
 import classes from "./Button.module.css";
-import type { ButtonProps } from "./Button.props";
+import type { ButtonProps } from "./Button.props.ts";
 
 const Button: FC<ButtonProps> = ({
   children,

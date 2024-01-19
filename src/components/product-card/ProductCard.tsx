@@ -1,8 +1,8 @@
 import type { FC, MouseEvent } from "react";
 
 import WhiteCartIcon from "@assets/icons/WhiteCart";
-import Button from "@components/button";
 import Rating from "@components/rating";
+import Button from "@components/ui/button";
 import { useAppDispatch } from "@store/hooks";
 import { cartActions } from "@store/slices";
 

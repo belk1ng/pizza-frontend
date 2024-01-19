@@ -2,9 +2,9 @@ import { useState } from "react";
 import type { ChangeEvent } from "react";
 
 import SearchIcon from "@assets/icons/Search";
-import Heading from "@components/heading";
-import Input from "@components/input";
 import ProductsList from "@components/products-list";
+import Heading from "@components/ui/heading";
+import Input from "@components/ui/input";
 import withTitle from "@hocs/withTitle";
 import useDebounce from "@hooks/useDebounce";
 

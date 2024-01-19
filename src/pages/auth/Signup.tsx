@@ -1,9 +1,9 @@
 import { FormEvent, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import Button from "@components/button";
-import Heading from "@components/heading";
-import Input from "@components/input";
+import Button from "@components/ui/button";
+import Heading from "@components/ui/heading";
+import Input from "@components/ui/input";
 import withTitle from "@hocs/withTitle";
 import { FormSignupValues } from "@pages/auth/Auth.types";
 import { AUTH_PATHS, ROOT_PATHS } from "@routes/paths";

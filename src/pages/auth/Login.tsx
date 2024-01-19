@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import type { FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import Button from "@components/button";
-import Heading from "@components/heading";
-import Input from "@components/input";
+import Button from "@components/ui/button";
+import Heading from "@components/ui/heading";
+import Input from "@components/ui/input";
 import withTitle from "@hocs/withTitle";
 import { AUTH_PATHS, ROOT_PATHS } from "@routes/paths";
 import { useAppDispatch, useAppSelector } from "@store/hooks";

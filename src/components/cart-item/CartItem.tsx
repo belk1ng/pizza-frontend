@@ -1,6 +1,6 @@
 import type { FC } from "react";
 
-import Button from "@components/button";
+import Button from "@components/ui/button";
 import { useAppDispatch } from "@store/hooks";
 import { cartActions } from "@store/slices";
 

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axiosInstance from "@/api/axios";
 import { Product, Products } from "@/types/product";
 import CartItem from "@components/cart-item";
-import Heading from "@components/heading";
+import Heading from "@components/ui/heading";
 import withTitle from "@hocs/withTitle";
 import { useAppSelector } from "@store/hooks";
 import { cartSelector } from "@store/slices";
