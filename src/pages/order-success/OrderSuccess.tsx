@@ -15,7 +15,7 @@ const OrderSuccess = () => {
 
   return (
     <section className={classes.section}>
-      <img src="/assets/pics/pizza.png" />
+      <img alt="Изображение пиццы" src="/assets/pics/pizza.png" />
       <p className={classes.section__message}>Ваш заказ успешно оформлен!</p>
       <Button
         size="large"

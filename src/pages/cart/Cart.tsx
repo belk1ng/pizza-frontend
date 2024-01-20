@@ -1,13 +1,12 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import axiosInstance from "@/api/axios";
 import { OrderResponse } from "@/types/order";
-import { Product, Products } from "@/types/product";
 import CartItem from "@components/cart-item";
 import Button from "@components/ui/button";
 import Heading from "@components/ui/heading";
 import withTitle from "@hocs/withTitle";
+import useCart from "@hooks/useCart";
 import useRequest from "@hooks/useRequest";
 import { ROOT_PATHS } from "@routes/paths";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
@@ -16,11 +15,9 @@ import { authSelector, cartActions, cartSelector } from "@store/slices";
 import classes from "./Cart.module.css";
 
 const Cart = () => {
-  const [items, setItems] = useState<Products>([]);
-
-  const [productIds, setProductIds] = useState("");
-
   const { products, productsCount } = useAppSelector(cartSelector);
+
+  const cartItems = useCart();
 
   const { accessToken } = useAppSelector(authSelector);
 
@@ -29,50 +26,6 @@ const Cart = () => {
   const { request, data } = useRequest<OrderResponse>("/order");
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setProductIds(Object.keys(products).join(","));
-  }, [products]);
-
-  const getProduct = useCallback(
-    async (id: number, controller: AbortController) => {
-      const { data } = await axiosInstance.get<Product>(`/products/${id}`, {
-        signal: controller.signal,
-      });
-      return data;
-    },
-    []
-  );
-
-  const loadItems = useCallback(
-    async (controller: AbortController) => {
-      if (productIds) {
-        const response = await Promise.all(
-          productIds
-            .split(",")
-            .map((productId) => getProduct(Number(productId), controller))
-        );
-
-        setItems(response);
-      }
-    },
-    [productIds, getProduct]
-  );
-
-  useEffect(() => {
-    const controller = new AbortController();
-    const cartProductIds = productIds.split(",");
-
-    setItems((prev) =>
-      prev.filter(({ id }) => cartProductIds.includes(String(id)))
-    );
-
-    void loadItems(controller);
-
-    return () => {
-      controller.abort();
-    };
-  }, [productIds, loadItems]);
 
   useEffect(() => {
     if (data) {
@@ -85,7 +38,7 @@ const Cart = () => {
     void (await request({
       method: "POST",
       data: {
-        products: items.map(({ id }) => ({
+        products: cartItems.map(({ id }) => ({
           id,
           count: products[id],
         })),
@@ -96,26 +49,28 @@ const Cart = () => {
     }));
   };
 
-  const DELIVERY_PRICE = items.length === 0 ? 0 : 300;
+  const DELIVERY_PRICE = cartItems.length === 0 ? 0 : 300;
 
-  const PRODUCTS_PRICE = items.reduce(
+  const PRODUCTS_PRICE = cartItems.reduce(
     (acc, curr) => acc + curr.price * products[curr.id],
     0
   );
 
   const renderItems = () => {
-    if (items.length === 0) {
+    if (cartItems.length === 0) {
       return <p className={classes.section__message}>Ваша корзина пуста...</p>;
     }
 
-    return items.map(({ id, name, price, image }) => (
+    return cartItems.map(({ id, name, price, image }) => (
       <CartItem
         key={id}
-        id={id}
-        name={name}
-        price={price}
-        image={image}
-        count={products[id]}
+        record={{
+          id,
+          name,
+          price,
+          image,
+          count: products[id],
+        }}
       />
     ));
   };
@@ -156,6 +111,7 @@ const Cart = () => {
           size="large"
           className={classes.section__button}
           onClick={handleCheckout}
+          disabled={cartItems.length === 0}
         >
           Оформить
         </Button>

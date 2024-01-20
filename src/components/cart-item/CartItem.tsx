@@ -8,7 +8,9 @@ import { cartActions } from "@store/slices";
 import classes from "./CartItem.module.css";
 import type { CartItemProps } from "./CartItem.props";
 
-const CartItem: FC<CartItemProps> = ({ id, name, image, price, count }) => {
+const CartItem: FC<CartItemProps> = ({ record }) => {
+  const { id, name, image, price, count } = record;
+
   const dispatch = useAppDispatch();
 
   const handleDecrement = () => {

@@ -25,15 +25,15 @@
   color: var(--primary-color);
 }
 
-.button:hover {
+.button:not(.button--disabled):hover {
   scale: 1.03;
 }
 
-.button--contained:hover {
+.button--contained:not(.button--disabled):hover {
   background-color: var(--primary-hover-color);
 }
 
-.button--outlined:hover {
+.button--outlined:not(.button--disabled):hover {
   color: var(--primary-hover-color);
 }
 
@@ -52,6 +52,7 @@
 
 .button--disabled {
   cursor: not-allowed;
+  opacity: 0.75;
 }
 
 .button--circled {

@@ -4,5 +4,6 @@ interface CartItemExtra {
   count: number;
 }
 
-export type CartItemProps = Pick<Product, "id" | "name" | "image" | "price"> &
-  CartItemExtra;
+export interface CartItemProps {
+  record: Pick<Product, "id" | "name" | "image" | "price"> & CartItemExtra;
+}
