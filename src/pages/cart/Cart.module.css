@@ -6,10 +6,47 @@
   text-align: center;
 }
 
-.section__list {
+.section__items-list,
+.section__price-list {
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
+}
+
+.section__items-list {
   gap: 30px;
+}
+
+.section__price-list {
+  margin-top: 30px;
+  list-style-type: none;
+  gap: 16px;
+}
+
+.section__price {
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.section__price:not(:last-of-type) {
+  border-bottom: 1px solid var(--divider-color);
+}
+
+.section__count,
+.section__ruble {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.section__count {
+  margin-left: 4px;
+}
+
+.section__button {
+  margin: 70px auto 0;
 }
