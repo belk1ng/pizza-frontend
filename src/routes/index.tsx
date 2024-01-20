@@ -6,7 +6,14 @@ import { productLoader } from "@pages/product";
 import { AUTH_PATHS, ROOT_PATHS } from "@routes/paths";
 import ProtectedRoute from "@routes/ProtectedRoute";
 
-import { Catalog, Cart, Product, Login, Signup } from "./elements";
+import {
+  Catalog,
+  Cart,
+  Product,
+  OrderSuccess,
+  Login,
+  Signup,
+} from "./elements";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +36,10 @@ const router = createBrowserRouter([
         path: ROOT_PATHS.product.path,
         element: <Product />,
         loader: productLoader,
+      },
+      {
+        path: ROOT_PATHS.thanks,
+        element: <OrderSuccess />,
       },
     ],
   },

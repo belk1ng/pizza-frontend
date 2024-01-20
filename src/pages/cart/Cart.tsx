@@ -1,13 +1,17 @@
 import { useEffect, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import axiosInstance from "@/api/axios";
+import { OrderResponse } from "@/types/order";
 import { Product, Products } from "@/types/product";
 import CartItem from "@components/cart-item";
 import Button from "@components/ui/button";
 import Heading from "@components/ui/heading";
 import withTitle from "@hocs/withTitle";
-import { useAppSelector } from "@store/hooks";
-import { cartSelector } from "@store/slices";
+import useRequest from "@hooks/useRequest";
+import { ROOT_PATHS } from "@routes/paths";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { authSelector, cartActions, cartSelector } from "@store/slices";
 
 import classes from "./Cart.module.css";
 
@@ -17,6 +21,14 @@ const Cart = () => {
   const [productIds, setProductIds] = useState("");
 
   const { products, productsCount } = useAppSelector(cartSelector);
+
+  const { accessToken } = useAppSelector(authSelector);
+
+  const dispatch = useAppDispatch();
+
+  const { request, data } = useRequest<OrderResponse>("/order");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setProductIds(Object.keys(products).join(","));
@@ -61,6 +73,28 @@ const Cart = () => {
       controller.abort();
     };
   }, [productIds, loadItems]);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(cartActions.clearCart());
+      navigate(ROOT_PATHS.thanks);
+    }
+  }, [data, dispatch, navigate]);
+
+  const handleCheckout = async () => {
+    void (await request({
+      method: "POST",
+      data: {
+        products: items.map(({ id }) => ({
+          id,
+          count: products[id],
+        })),
+      },
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }));
+  };
 
   const DELIVERY_PRICE = items.length === 0 ? 0 : 300;
 
@@ -118,7 +152,11 @@ const Cart = () => {
           </li>
         </ul>
 
-        <Button size="large" className={classes.section__button}>
+        <Button
+          size="large"
+          className={classes.section__button}
+          onClick={handleCheckout}
+        >
           Оформить
         </Button>
       </section>
