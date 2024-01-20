@@ -11,10 +11,10 @@ import type { RootState } from "../store";
 export const ACCESS_TOKEN_KEY = "access_token";
 
 interface AuthSliceValues {
-  accessToken: string | null;
-  user: User | null;
-  loginError: string | null;
-  signUpError: string | null;
+  accessToken: Nullable<string>;
+  user: Nullable<User>;
+  loginError: Nullable<string>;
+  signUpError: Nullable<string>;
 }
 
 const initialState: AuthSliceValues = {

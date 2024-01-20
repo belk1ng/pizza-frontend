@@ -4,9 +4,9 @@ import { useState, useCallback, useRef } from "react";
 import axiosInstance from "@/api/axios";
 
 type RequestAxiosError = AxiosError<{ message?: string }>;
-type RequestError = RequestAxiosError | null;
+type RequestError = Nullable<RequestAxiosError>;
 
-type RequestData<T> = T | null;
+type RequestData<T> = Nullable<T>;
 
 type RequestCache<T> = {
   [url: string]: T;
