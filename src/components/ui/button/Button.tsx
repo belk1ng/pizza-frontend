@@ -1,6 +1,8 @@
 import cn from "classnames";
 import type { FC } from "react";
 
+import Ripple from "@components/ui/ripple";
+
 import classes from "./Button.module.css";
 import type { ButtonProps } from "./Button.props.ts";
 
@@ -32,6 +34,7 @@ const Button: FC<ButtonProps> = ({
     <button type={type} className={classNames} {...props}>
       {startIcon && startIcon}
       {children}
+      <Ripple />
     </button>
   );
 };

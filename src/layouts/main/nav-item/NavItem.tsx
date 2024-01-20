@@ -2,6 +2,8 @@ import cn from "classnames";
 import type { FC } from "react";
 import { NavLink } from "react-router-dom";
 
+import Ripple from "@components/ui/ripple";
+
 import classes from "./NavItem.module.css";
 import type { NavItemProps } from "./NavItem.props";
 
@@ -18,6 +20,7 @@ const NavItem: FC<NavItemProps> = ({ icon, children, href }) => {
       >
         {icon && icon}
         {children}
+        <Ripple />
       </NavLink>
     </li>
   );

@@ -12,6 +12,9 @@
   transition:
     background-color 0.25s ease,
     color 0.25s ease;
+
+  position: relative;
+  overflow: hidden;
 }
 
 .nav-item__link:not(.nav-item__link--active):hover {
