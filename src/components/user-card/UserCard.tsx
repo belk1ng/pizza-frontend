@@ -1,5 +1,7 @@
 import type { FC } from "react";
 
+import Typography from "@components/ui/typography";
+
 import classes from "./UserCard.module.css";
 import type { UserCardProps } from "./UserCard.props";
 
@@ -13,8 +15,10 @@ const UserCard: FC<UserCardProps> = ({ fullName, email, avatarSource }) => {
       />
 
       <div className={classes["user-info__meta"]}>
-        <h3 className={classes["user-info__name"]}>{fullName}</h3>
-        <p className={classes["user-info__email"]}>{email}</p>
+        <Typography className={classes["user-info__name"]}>
+          {fullName}
+        </Typography>
+        <Typography className={classes["user-info__email"]}>{email}</Typography>
       </div>
     </section>
   );

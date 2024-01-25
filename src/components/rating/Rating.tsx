@@ -8,7 +8,7 @@ import type { RatingProps } from "./Rating.props";
 const Rating: FC<RatingProps> = ({ value }) => {
   return (
     <div className={classes.rating}>
-      {value}
+      <span>{value}</span>
       <RatingIcon />
     </div>
   );

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import WhiteCartIcon from "@assets/icons/WhiteCart";
 import Rating from "@components/rating";
 import Button from "@components/ui/button";
+import Typography from "@components/ui/typography";
 import { ROOT_PATHS } from "@routes/paths";
 import { useAppDispatch } from "@store/hooks";
 import { cartActions } from "@store/slices";
@@ -32,7 +33,8 @@ const ProductCard: FC<ProductCardProps> = ({ record, className, ...props }) => {
           />
           <header className={classes.card__header}>
             <div className={classes.card__price}>
-              {price} <span className={classes["card__price-sign"]}>₽</span>
+              <span>{price} </span>
+              <span className={classes["card__price-sign"]}>₽</span>
             </div>
             <Button
               circled
@@ -46,7 +48,9 @@ const ProductCard: FC<ProductCardProps> = ({ record, className, ...props }) => {
         <div className={classes.card__content}>
           <Rating value={rating} />
           <h3 className={classes.card__title}>{name}</h3>
-          <p className={classes.card__description}>{ingredients.join(", ")}</p>
+          <Typography className={classes.card__description}>
+            {ingredients.join(", ")}
+          </Typography>
         </div>
       </Link>
     </li>

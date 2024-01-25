@@ -34,15 +34,15 @@ const CartItem: FC<CartItemProps> = ({ record }) => {
           alt="Изображение товара"
         />
         <div className={classes.item__content}>
-          <p className={classes.item__name}>{name}</p>
-          <p className={classes.item__price}>{price} ₽</p>
+          <span className={classes.item__name}>{name}</span>
+          <span className={classes.item__price}>{price} ₽</span>
         </div>
       </div>
       <div className={classes.item__actions}>
         <Button circled variant="outlined" onClick={handleDecrement}>
           -
         </Button>
-        <p className={classes.item__count}>{count}</p>
+        <span className={classes.item__count}>{count}</span>
         <Button circled onClick={handleIncrement}>
           +
         </Button>

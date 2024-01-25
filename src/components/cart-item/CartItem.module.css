@@ -21,6 +21,11 @@
   border-radius: 20px;
 }
 
+.item__name,
+.item__price {
+  display: block;
+}
+
 .item__name {
   font-size: 18px;
   font-weight: 600;
