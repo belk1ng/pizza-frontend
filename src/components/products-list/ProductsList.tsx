@@ -1,67 +1,41 @@
-import { FC, useEffect } from "react";
-import { Link } from "react-router-dom";
+import type { FC } from "react";
 
-import type { Products } from "@/types/product";
 import ProductCard from "@components/product-card";
-import useRequest from "@hooks/useRequest";
-import { ROOT_PATHS } from "@routes/paths";
+import Loader from "@components/ui/loader";
+import Typography from "@components/ui/typography";
+import useProducts from "@hooks/useProducts";
 
 import type { ProductListProps } from "./ProductList.props";
 import classes from "./ProductsList.module.css";
 
 const ProductsList: FC<ProductListProps> = ({ filterName }) => {
-  const {
-    data: products,
-    request,
-    error,
-    loading,
-  } = useRequest<Products>("/products");
-
-  useEffect(() => {
-    const params = new URLSearchParams();
-    const name = filterName.trim();
-
-    if (name) {
-      params.append("name", name);
-    }
-
-    const abortController = new AbortController();
-
-    void request({
-      params,
-      signal: abortController.signal,
-    });
-
-    return () => {
-      abortController.abort();
-    };
-  }, [filterName, request]);
+  const { loading, error, products } = useProducts(filterName);
 
   if (loading) {
-    return <p>Загружаем...</p>;
+    return <Loader />;
   }
 
   if (error) {
     return (
-      <p>Возникла ошибка: {error?.response?.data?.message ?? error.message}</p>
+      <Typography>
+        Возникла ошибка: {error?.response?.data?.message ?? error.message}
+      </Typography>
     );
   }
 
-  if (products && products.length > 0) {
-    return (
-      <ul className={classes.list}>
-        {products.map((record) => (
-          <li className={classes.list__item} key={record.id}>
-            <Link to={ROOT_PATHS.product.resolver(record.id)}>
-              <ProductCard record={record} />
-            </Link>
-          </li>
-        ))}
-      </ul>
-    );
-  }
-
-  return <p>По вашему запросу ничего не найдено</p>;
+  return products && products.length > 0 ? (
+    <ul className={classes.list}>
+      {products.map((record) => (
+        <ProductCard
+          key={record.id}
+          record={record}
+          className={classes.list__item}
+        />
+      ))}
+    </ul>
+  ) : (
+    <Typography>По вашему запросу ничего не найдено</Typography>
+  );
 };
 
 export default ProductsList;
