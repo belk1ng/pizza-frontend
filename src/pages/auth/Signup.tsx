@@ -1,10 +1,8 @@
-import { FormEvent, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import type { FormEvent } from "react";
 
 import withTitle from "@hocs/withTitle";
 import { FormSignupValues } from "@pages/auth/Auth.types";
-import AuthTemplate from "@pages/auth/AuthTemplate.tsx";
-import { ROOT_PATHS } from "@routes/paths";
+import AuthTemplate from "@pages/auth/AuthTemplate";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { authActions, authSelector } from "@store/slices";
 import { signUp } from "@store/slices/auth.slice";
@@ -12,15 +10,7 @@ import { signUp } from "@store/slices/auth.slice";
 const Signup = () => {
   const dispatch = useAppDispatch();
 
-  const { accessToken, signUpError } = useAppSelector(authSelector);
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (accessToken) {
-      navigate(ROOT_PATHS.root);
-    }
-  }, [navigate, accessToken]);
+  const { signUpError } = useAppSelector(authSelector);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

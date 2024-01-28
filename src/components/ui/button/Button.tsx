@@ -4,7 +4,7 @@ import type { FC } from "react";
 import Ripple from "@components/ui/ripple";
 
 import classes from "./Button.module.css";
-import type { ButtonProps } from "./Button.props.ts";
+import type { ButtonProps } from "./Button.props";
 
 const Button: FC<ButtonProps> = ({
   children,

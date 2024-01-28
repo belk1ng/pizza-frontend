@@ -10,7 +10,7 @@ import useCart from "@hooks/useCart";
 import useRequest from "@hooks/useRequest";
 import { ROOT_PATHS } from "@routes/paths";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { authSelector, cartActions, cartSelector } from "@store/slices";
+import { cartActions, cartSelector } from "@store/slices";
 
 import classes from "./Cart.module.css";
 
@@ -18,8 +18,6 @@ const Cart = () => {
   const { products, productsCount } = useAppSelector(cartSelector);
 
   const cartItems = useCart();
-
-  const { accessToken } = useAppSelector(authSelector);
 
   const dispatch = useAppDispatch();
 
@@ -42,9 +40,6 @@ const Cart = () => {
           id,
           count: products[id],
         })),
-      },
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
       },
     }));
   };

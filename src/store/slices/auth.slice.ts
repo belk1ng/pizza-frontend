@@ -11,14 +11,18 @@ import type { RootState } from "../store";
 export const ACCESS_TOKEN_KEY = "access_token";
 
 interface AuthSliceValues {
-  accessToken: Nullable<string>;
+  isInit: boolean;
+  isAuthenticated: boolean;
+  accessToken: string;
   user: Nullable<User>;
   loginError: Nullable<string>;
   signUpError: Nullable<string>;
 }
 
 const initialState: AuthSliceValues = {
-  accessToken: getStorageValue(ACCESS_TOKEN_KEY),
+  isInit: false,
+  isAuthenticated: false,
+  accessToken: getStorageValue(ACCESS_TOKEN_KEY) ?? "",
   user: null,
   loginError: null,
   signUpError: null,
@@ -35,7 +39,7 @@ const authSlice = createSlice({
       state.signUpError = null;
     },
     logout: (state) => {
-      state.accessToken = null;
+      state.accessToken = "";
       state.user = null;
     },
   },
@@ -43,6 +47,7 @@ const authSlice = createSlice({
     builder.addCase(login.fulfilled, (state, action) => {
       if (action.payload) {
         state.accessToken = action.payload.access_token;
+        state.isAuthenticated = true;
       }
     });
     builder.addCase(login.rejected, (state, action) => {
@@ -54,6 +59,7 @@ const authSlice = createSlice({
     builder.addCase(signUp.fulfilled, (state, action) => {
       if (action.payload) {
         state.accessToken = action.payload.access_token;
+        state.isAuthenticated = true;
       }
     });
     builder.addCase(signUp.rejected, (state, action) => {
@@ -65,7 +71,14 @@ const authSlice = createSlice({
     builder.addCase(getProfile.fulfilled, (state, action) => {
       if (action.payload) {
         state.user = action.payload;
+        state.isInit = true;
+        state.isAuthenticated = true;
       }
+    });
+    builder.addCase(getProfile.rejected, (state) => {
+      state.isInit = true;
+      state.isAuthenticated = false;
+      state.accessToken = "";
     });
   },
 });
@@ -122,16 +135,9 @@ export const getProfile = createAsyncThunk<
   User,
   void,
   { state: RootState; rejectValue: string }
->("auth/profile", async (_, { getState, signal, rejectWithValue }) => {
-  const { accessToken } = getState().auth;
-
-  const token = `Bearer ${accessToken}`;
-
+>("auth/profile", async (_, { signal, rejectWithValue }) => {
   try {
     const { data } = await axiosInstance.get<User>("/user/profile", {
-      headers: {
-        Authorization: token,
-      },
       signal,
     });
     return data;

@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import LogoutIcon from "@assets/icons/Logout";
@@ -7,7 +7,6 @@ import UserCard from "@components/user-card";
 import { AUTH_PATHS } from "@routes/paths";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { authActions, authSelector } from "@store/slices";
-import { getProfile } from "@store/slices/auth.slice";
 
 import Aside from "./aside";
 import classes from "./MainLayout.module.css";
@@ -19,14 +18,6 @@ const MainLayout = () => {
   const { user } = useAppSelector(authSelector);
 
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    const profileRequest = dispatch(getProfile());
-
-    return () => {
-      profileRequest.abort();
-    };
-  }, [dispatch]);
 
   const logout = () => {
     dispatch(authActions.logout());

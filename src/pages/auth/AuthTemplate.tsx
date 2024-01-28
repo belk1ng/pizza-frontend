@@ -18,15 +18,15 @@ const AuthTemplate: FC<AuthTemplateProps> = ({
   errorMessage,
   variant,
 }) => {
-  const { accessToken } = useAppSelector(authSelector);
+  const { isAuthenticated } = useAppSelector(authSelector);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (accessToken) {
+    if (isAuthenticated) {
       navigate(ROOT_PATHS.root);
     }
-  }, [navigate, accessToken]);
+  }, [navigate, isAuthenticated]);
 
   return (
     <section className={classes.content}>

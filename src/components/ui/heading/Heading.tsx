@@ -2,7 +2,7 @@ import cn from "classnames";
 import type { FC } from "react";
 
 import classes from "./Heading.module.css";
-import type { HeadingProps } from "./Heading.props.ts";
+import type { HeadingProps } from "./Heading.props";
 
 const Heading: FC<HeadingProps> = ({ children, className, ...props }) => {
   return (
