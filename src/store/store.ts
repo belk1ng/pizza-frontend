@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import axiosInstance from "@/api/axios";
-import { authReducer, cartReducer } from "@store/slices";
+import { authActions, authReducer, cartReducer } from "@store/slices";
 import { ACCESS_TOKEN_KEY } from "@store/slices/auth.slice";
 import { setStorageValue } from "@utils/storage";
 
@@ -29,3 +29,18 @@ store.subscribe(() => {
 
 export type RootState = ReturnType<typeof store.getState>;
 export type TypedDispatch = typeof store.dispatch;
+
+const { dispatch } = store;
+
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const errorStatus = error?.response?.status;
+
+    if (errorStatus === 401) {
+      dispatch(authActions.logout());
+    }
+
+    return Promise.reject(error);
+  }
+);

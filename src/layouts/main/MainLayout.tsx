@@ -1,10 +1,10 @@
 import { Suspense } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import LogoutIcon from "@assets/icons/Logout";
 import Button from "@components/ui/button";
 import UserCard from "@components/user-card";
-import { AUTH_PATHS } from "@routes/paths";
+// import { AUTH_PATHS } from "@routes/paths";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { authActions, authSelector } from "@store/slices";
 
@@ -13,7 +13,7 @@ import classes from "./MainLayout.module.css";
 import Nav from "./nav";
 
 const MainLayout = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { user } = useAppSelector(authSelector);
 
@@ -21,7 +21,7 @@ const MainLayout = () => {
 
   const logout = () => {
     dispatch(authActions.logout());
-    navigate(AUTH_PATHS.sign_in);
+    // navigate(AUTH_PATHS.sign_in);
   };
 
   return (

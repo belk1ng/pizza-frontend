@@ -1,6 +1,6 @@
 import type { FC, ReactNode } from "react";
 import { useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import Loader from "@components/ui/loader";
 import { AUTH_PATHS } from "@routes/paths";
@@ -17,9 +17,17 @@ const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
 
   const dispatch = useAppDispatch();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(getProfile());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (!isAuthenticated && isInit) {
+      navigate(AUTH_PATHS.sign_in);
+    }
+  }, [isAuthenticated, isInit, navigate]);
 
   if (!isInit) {
     return <Loader />;
