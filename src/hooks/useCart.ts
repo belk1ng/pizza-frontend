@@ -8,10 +8,13 @@ import { cartSelector } from "@store/slices";
 const useCart = () => {
   const [cartItems, setCartItems] = useState<Products>([]);
 
+  const [loading, setLoading] = useState(false);
+
   const { products } = useAppSelector(cartSelector);
 
   const productsRef = useRef<number[]>(Object.keys(products).map(Number));
 
+  // TODO: Добавить обработку ошибок
   const getProduct = useCallback(
     async (id: number, controller: AbortController) => {
       const { data } = await axiosInstance.get<Product>(`/products/${id}`, {
@@ -25,17 +28,19 @@ const useCart = () => {
 
   const loadItems = useCallback(
     async (controller: AbortController) => {
+      setLoading(true);
+
       const productIds = productsRef.current;
 
       if (productIds) {
         const response = await Promise.all(
-          productIds.map((productId) =>
-            getProduct(Number(productId), controller)
-          )
+          productIds.map((productId) => getProduct(productId, controller))
         );
 
         setCartItems(response);
       }
+
+      setLoading(false);
     },
     [getProduct]
   );
@@ -58,7 +63,7 @@ const useCart = () => {
     );
   }, [products]);
 
-  return cartItems;
+  return { cartItems, loading };
 };
 
 export default useCart;

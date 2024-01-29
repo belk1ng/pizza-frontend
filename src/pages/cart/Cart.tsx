@@ -5,6 +5,7 @@ import { OrderResponse } from "@/types/order";
 import CartItem from "@components/cart-item";
 import Button from "@components/ui/button";
 import Heading from "@components/ui/heading";
+import Loader from "@components/ui/loader";
 import withTitle from "@hocs/withTitle";
 import useCart from "@hooks/useCart";
 import useRequest from "@hooks/useRequest";
@@ -17,7 +18,7 @@ import classes from "./Cart.module.css";
 const Cart = () => {
   const { products, productsCount } = useAppSelector(cartSelector);
 
-  const cartItems = useCart();
+  const { cartItems, loading } = useCart();
 
   const dispatch = useAppDispatch();
 
@@ -33,7 +34,7 @@ const Cart = () => {
   }, [data, dispatch, navigate]);
 
   const handleCheckout = async () => {
-    void (await request({
+    void request({
       method: "POST",
       data: {
         products: cartItems.map(({ id }) => ({
@@ -41,7 +42,7 @@ const Cart = () => {
           count: products[id],
         })),
       },
-    }));
+    });
   };
 
   const DELIVERY_PRICE = cartItems.length === 0 ? 0 : 300;
@@ -52,6 +53,10 @@ const Cart = () => {
   );
 
   const renderItems = () => {
+    if (loading) {
+      return <Loader />;
+    }
+
     if (cartItems.length === 0) {
       return <p className={classes.section__message}>Ваша корзина пуста...</p>;
     }

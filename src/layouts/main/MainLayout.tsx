@@ -3,8 +3,8 @@ import { Outlet } from "react-router-dom";
 
 import LogoutIcon from "@assets/icons/Logout";
 import Button from "@components/ui/button";
+import Loader from "@components/ui/loader";
 import UserCard from "@components/user-card";
-// import { AUTH_PATHS } from "@routes/paths";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { authActions, authSelector } from "@store/slices";
 
@@ -13,15 +13,12 @@ import classes from "./MainLayout.module.css";
 import Nav from "./nav";
 
 const MainLayout = () => {
-  // const navigate = useNavigate();
-
   const { user } = useAppSelector(authSelector);
 
   const dispatch = useAppDispatch();
 
   const logout = () => {
     dispatch(authActions.logout());
-    // navigate(AUTH_PATHS.sign_in);
   };
 
   return (
@@ -38,7 +35,7 @@ const MainLayout = () => {
         </Button>
       </Aside>
       <main className={classes.content}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </main>
