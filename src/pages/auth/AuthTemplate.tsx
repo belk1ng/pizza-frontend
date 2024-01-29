@@ -53,7 +53,7 @@ const AuthTemplate: FC<AuthTemplateProps> = ({
 
         <div className={classes.content__footer}>
           <Typography className={classes.content__question}>
-            {variant === "signup" ? "Нет аккаунта?" : "Есть аккаунт?"}
+            {variant === "signup" ? "Есть аккаунт?" : "Нет аккаунта?"}
           </Typography>
           <Link
             to={variant === "signup" ? AUTH_PATHS.sign_in : AUTH_PATHS.sign_up}

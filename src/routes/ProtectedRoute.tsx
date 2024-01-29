@@ -6,7 +6,7 @@ import Loader from "@components/ui/loader";
 import { AUTH_PATHS } from "@routes/paths";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { authSelector } from "@store/slices";
-import { getProfile } from "@store/slices/auth.slice.ts";
+import { getProfile } from "@store/slices/auth.slice";
 
 interface ProtectedRouteProps {
   children: ReactNode | ReactNode[];

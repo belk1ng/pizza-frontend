@@ -11,7 +11,7 @@ const Nav = () => {
   const { productsCount } = useAppSelector(cartSelector);
 
   const navItems = [
-    { title: "Каталог", icon: <CatalogIcon />, href: ROOT_PATHS.root },
+    { title: "Каталог", icon: <CatalogIcon />, href: ROOT_PATHS.catalog },
     {
       title: "Корзина",
       icon: <CartIcon />,
