@@ -1,0 +1,39 @@
+@keyframes spin {
+  from {
+    rotate: 0;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+
+.loader {
+  pointer-events: none;
+  width: 50px;
+  aspect-ratio: 1;
+  border: 0.4em solid var(--loader-bg);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loader__wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader__backdrop {
+  position: absolute;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

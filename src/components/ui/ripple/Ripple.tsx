@@ -4,7 +4,7 @@ import type { MouseEvent } from "react";
 import classes from "./Ripple.module.css";
 import type { RippleValues } from "./Ripple.types";
 
-const Ripple = ({ duration = 900 }) => {
+const Ripple = ({ duration = 1200 }) => {
   const [ripples, setRipples] = useState<RippleValues[]>([]);
 
   useEffect(() => {

@@ -15,7 +15,7 @@ const AuthLayout = () => {
         />
       </aside>
       <main className={classes.layout__content}>
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={<Loader fullscreen />}>
           <Outlet />
         </Suspense>
       </main>

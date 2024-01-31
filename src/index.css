@@ -13,10 +13,13 @@
   --text-secondary: #5b5b5e;
 
   --input-sign-color: #c4c4c4;
-  --input-border-color: #eeeeee;
+  --input-border: 1px solid #eeeeee;
+  --input-hover-border: 1px solid var(--primary-color);
+  --input-focus-border: 1px solid var(--primary-hover-color);
 
   --menu-item-active-color: #929eab29;
 
+  --loader-bg: #eee;
   --white: #fff;
 }
 

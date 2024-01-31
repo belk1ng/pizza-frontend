@@ -20,7 +20,18 @@
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
-  border: 1px solid var(--input-border-color);
+  border: var(--input-border);
+
+  transition: 0.25s ease-in;
+}
+
+.input__field:hover {
+  border: var(--input-hover-border);
+}
+
+.input__field:focus {
+  outline: none;
+  border: var(--input-focus-border);
 }
 
 .input__field::placeholder {

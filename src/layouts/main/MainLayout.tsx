@@ -35,7 +35,7 @@ const MainLayout = () => {
         </Button>
       </Aside>
       <main className={classes.content}>
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={<Loader fullscreen />}>
           <Outlet />
         </Suspense>
       </main>

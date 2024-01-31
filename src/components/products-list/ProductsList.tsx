@@ -12,7 +12,7 @@ const ProductsList: FC<ProductListProps> = ({ filterName }) => {
   const { loading, error, products } = useProducts(filterName);
 
   if (loading) {
-    return <Loader />;
+    return <Loader fullscreen />;
   }
 
   if (error) {
