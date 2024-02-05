@@ -15,6 +15,10 @@ const ProductsList: FC<ProductListProps> = ({ filterName }) => {
     return <Loader fullscreen />;
   }
 
+  if (!loading && products?.length === 0) {
+    return <Typography>По вашему запросу ничего не найдено</Typography>;
+  }
+
   if (error) {
     return (
       <Typography>
@@ -23,9 +27,9 @@ const ProductsList: FC<ProductListProps> = ({ filterName }) => {
     );
   }
 
-  return products && products.length > 0 ? (
+  return (
     <ul className={classes.list}>
-      {products.map((record) => (
+      {products?.map((record) => (
         <ProductCard
           key={record.id}
           record={record}
@@ -33,8 +37,6 @@ const ProductsList: FC<ProductListProps> = ({ filterName }) => {
         />
       ))}
     </ul>
-  ) : (
-    <Typography>По вашему запросу ничего не найдено</Typography>
   );
 };
 
