@@ -5,6 +5,7 @@ import MainLayout from "@layouts/main";
 import { productLoader } from "@pages/product";
 import { AUTH_PATHS, ROOT_PATHS } from "@routes/paths";
 import ProtectedRoute from "@routes/ProtectedRoute";
+import PublicRoute from "@routes/PublicRoute";
 
 import {
   Catalog,
@@ -49,7 +50,11 @@ const router = createBrowserRouter([
   },
   {
     path: AUTH_PATHS.root,
-    element: <AuthLayout />,
+    element: (
+      <PublicRoute>
+        <AuthLayout />
+      </PublicRoute>
+    ),
     children: [
       {
         element: <Navigate to={AUTH_PATHS.sign_in} replace />,

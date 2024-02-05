@@ -1,27 +1,23 @@
-import type { FC, ReactNode } from "react";
+import type { FC } from "react";
 import { useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
 import Loader from "@components/ui/loader";
+import useInitAuth from "@hooks/useInitAuth";
 import { AUTH_PATHS } from "@routes/paths";
-import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { useAppSelector } from "@store/hooks";
 import { authSelector } from "@store/slices";
-import { getProfile } from "@store/slices/auth.slice";
 
 interface ProtectedRouteProps {
-  children: ReactNode | ReactNode[];
+  children: Children;
 }
 
 const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
   const { isInit, isAuthenticated } = useAppSelector(authSelector);
 
-  const dispatch = useAppDispatch();
+  useInitAuth();
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    dispatch(getProfile());
-  }, [dispatch]);
 
   useEffect(() => {
     if (!isAuthenticated && isInit) {
