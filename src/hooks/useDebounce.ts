@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef } from "react";
 
 import debounce from "@utils/debounce";
 
-const useDebounce = <F extends () => ReturnType<F>>(
+const useDebounce = <F extends (...args: Parameters<F>) => ReturnType<F>>(
   callback: F,
   delay: number
 ) => {
@@ -13,7 +13,10 @@ const useDebounce = <F extends () => ReturnType<F>>(
   }, [callback]);
 
   return useMemo(() => {
-    return debounce(() => callbackRef.current(), delay);
+    return debounce(
+      (...args: Parameters<F>) => callbackRef.current(...args),
+      delay
+    );
   }, [delay]);
 };
 

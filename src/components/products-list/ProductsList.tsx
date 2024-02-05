@@ -8,8 +8,8 @@ import useProducts from "@hooks/useProducts";
 import type { ProductListProps } from "./ProductList.props";
 import classes from "./ProductsList.module.css";
 
-const ProductsList: FC<ProductListProps> = ({ filterName }) => {
-  const { loading, error, products } = useProducts(filterName);
+const ProductsList: FC<ProductListProps> = ({ searchString }) => {
+  const { loading, error, products } = useProducts(searchString);
 
   if (loading) {
     return <Loader fullscreen />;

@@ -1,3 +1,3 @@
 export interface ProductListProps {
-  filterName: string;
+  searchString: string;
 }
