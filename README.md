@@ -1,17 +1,21 @@
-# Приложение пицерии
+# Pizzeria app
 
-Репозиторий содержит реализацию клиентской части для приложения пиццерии.
+The repository contains a client-side implementation for a pizzeria application.
 
-## Технический стек
+## Tech Stack
 - React
 - TypeScript
 - React-router-dom
 - Redux
-- CSS Modules
-- Vite
 
-## Установка и использование
-Чтобы запустить проект локально, выполните следующие шаги:
-1. Склонируйте репозиторий
-2. Установите зависимости с помощью `yarn install`
-3. Запустите сервер разработки с помощью `yarn dev`
+## Installation
+To run the project locally, follow these steps:
+```bash
+git clone https://github.com/belk1ng/pizza-frontend.git
+cd pizza-frontend
+yarn install
+yarn dev
+```
+
+## Preview
+![Preview pic](./public/preview.png)
